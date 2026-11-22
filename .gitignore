@@ -18,3 +18,5 @@ data/
 *.pkl
 *.joblib
 checkpoints/
+/home/om/Documents/Stud/AML/mini_project/datasets
+datasets/

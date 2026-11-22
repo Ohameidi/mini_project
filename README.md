@@ -1,3 +1,3 @@
 # AML Mini Project
 
-Mini project for the Applied Machine Learning course.
+Mini project for the Advanced Machine Learning course.

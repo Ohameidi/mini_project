@@ -4,14 +4,17 @@ import mne
 from mne.datasets import eegbci
 
 
+DEFAULT_DATASET_PATH = Path(__file__).resolve().parent / "datasets"
+
+
 def download_all_subjects(
     subjects,
     runs,
-    path="/home/om/Documents/Stud/AML/mini_project/datasets",
+    path=None,
     retries=3,
     delay_seconds=2.0,
 ):
-    target_dir = Path(path).expanduser()
+    target_dir = Path(path).expanduser() if path is not None else DEFAULT_DATASET_PATH
     target_dir.mkdir(parents=True, exist_ok=True)
 
     downloaded_files = {}
@@ -41,8 +44,8 @@ def download_all_subjects(
     return downloaded_files, failed_subjects
 
 
-def load_subject_raw(subj, runs, path="/home/om/Documents/Stud/AML/mini_project/datasets"):
-    target_dir = Path(path).expanduser()
+def load_subject_raw(subj, runs, path=None):
+    target_dir = Path(path).expanduser() if path is not None else DEFAULT_DATASET_PATH
     file_paths = eegbci.load_data([subj], runs, path=str(target_dir))
 
     raw_list = []
@@ -61,7 +64,7 @@ def load_subject_raw(subj, runs, path="/home/om/Documents/Stud/AML/mini_project/
 if __name__ == "__main__":
     all_subjects = list(range(1, 110))  # 1 bis 109
     runs = [6, 10, 14]
-    dataset_path = "/home/om/Documents/Stud/AML/mini_project/datasets"
+    dataset_path = DEFAULT_DATASET_PATH
 
     files_by_subj, failed = download_all_subjects(
         subjects=all_subjects,

@@ -70,7 +70,7 @@ if __name__ == "__main__":
     )
 
     total_files = sum(len(v) for v in files_by_subj.values())
-    print("\n--- Zusammenfassung ---")
+    print("\n--- Summery ---")
     print(f"Subjects: {len(files_by_subj)} / {len(all_subjects)}")
     print(f"total files: {total_files}")
-    print(f"Fehlgeschlagene Subjects: {failed}")
+    print(f"failed Subjects: {failed}")
